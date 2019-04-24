@@ -100,6 +100,13 @@ def AddPlayerB(Board, B):
         Board[PieceRow][PieceColumn] = 'b' + str(Index)   
   return Board
 
+
+'''
+Displays what error occurred, instead of the number only
+
+- Value is only parameter needed in function
+- Anything in {curly brackets}  with : maps a string to value
+'''
 def DisplayErrorCode(Value):
     Errors = {1: 'Invalid piece', 2: 'Invalid coordinate', 3: 'Input must be integer', 4: 'Invalid file' }
     print(Errors[Value])
@@ -201,7 +208,7 @@ def ValidJump(Board, PlayersPieces, Piece, NewRow, NewColumn):
       MiddlePieceColumn = (CurrentColumn + NewColumn) // 2
       MiddlePiece = Board[MiddlePieceRow][MiddlePieceColumn]
       MiddlePiecePlayer = MiddlePiece[0].lower()
-      if MiddlePiecePlayer != OppositePiecePlayer and MiddlePiecePlayer != ' ':
+      if MiddlePiecePlayer == OppositePiecePlayer or MiddlePiecePlayer != ' ':
         Valid = True       
   return Valid
 
@@ -354,6 +361,7 @@ def MakeMove(Board, PlayersPieces, OpponentsPieces, ListOfMoves, PieceIndex):
       MiddlePieceRow = (CurrentRow + NewRow) // 2
       MiddlePieceColumn = (CurrentColumn + NewColumn) // 2
       MiddlePiece = Board[MiddlePieceRow][MiddlePieceColumn]
+      Player = Piece[0]
       print('jumped over ', MiddlePiece)
   return Board, PlayersPieces, OpponentsPieces
 
