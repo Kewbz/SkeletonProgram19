@@ -111,12 +111,32 @@ def DisplayErrorCode(Value):
     Errors = {1: 'Invalid piece', 2: 'Invalid coordinate', 3: 'Input must be integer', 4: 'Invalid file' }
     print(Errors[Value])
   
+  
+'''
+Adds .txt to end of file name if it isn't added already
+'''
 def SetUpBoard(Board, A, B, FileFound):
+  FileFound = False
   FileName = 'game1.txt'
   Answer = input('Do you want to load a saved game? (Y/N): ')
   if Answer == 'Y' or Answer == 'y':
-    FileName = input('Enter the filename: ')
-  try:
+    while FileFound == False:
+      FileName = input('Enter the filename: ')
+      if '.txt' not in FileName:
+        FileName += '.txt'
+      try:
+        FileHandle = open(FileName, 'r')
+        FileFound = True
+        A = LoadPieces(FileHandle, A)
+        B = LoadPieces(FileHandle, B)
+        FileHandle.close()
+        Board = CreateNewBoard(Board)
+        Board = AddPlayerA(Board, A)
+        Board = AddPlayerB(Board, B)
+      except:
+        DisplayErrorCode(4)
+    
+   elif Answer == 'N' or Answer == 'n':
     FileHandle = open(FileName, 'r')
     FileFound = True
     A = LoadPieces(FileHandle, A)
@@ -125,8 +145,6 @@ def SetUpBoard(Board, A, B, FileFound):
     Board = CreateNewBoard(Board)
     Board = AddPlayerA(Board, A)
     Board = AddPlayerB(Board, B)
-  except:
-    DisplayErrorCode(4)
   return Board, A, B, FileFound
 
 def PrintHeading():
@@ -208,6 +226,9 @@ def ValidJump(Board, PlayersPieces, Piece, NewRow, NewColumn):
       MiddlePieceColumn = (CurrentColumn + NewColumn) // 2
       MiddlePiece = Board[MiddlePieceRow][MiddlePieceColumn]
       MiddlePiecePlayer = MiddlePiece[0].lower()
+      '''
+      Allows player to jump over their own pieces and steal opponent's pieces
+      '''
       if MiddlePiecePlayer == OppositePiecePlayer or MiddlePiecePlayer != ' ':
         Valid = True       
   return Valid
