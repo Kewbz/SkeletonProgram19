@@ -369,7 +369,8 @@ def MakeMove(Board, PlayersPieces, OpponentsPieces, ListOfMoves, PieceIndex):
        if MiddlePiece[:1] == OppositePiecePlayer:
         Board[MiddlePiceRow][MiddlePieceColumn] = SPACE
        StolenPieceNumber = int(MiddlePiece[1:])
-      
+       OpponentsPieces[StolenPieceNumber][0] = -1
+       OpponentsPieces[StolenPieceNumber][1] = -1
       print('jumped over ', MiddlePiece)
   return Board, PlayersPieces, OpponentsPieces
 
