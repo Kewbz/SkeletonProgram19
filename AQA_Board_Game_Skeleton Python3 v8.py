@@ -116,8 +116,9 @@ def DisplayErrorCode(Value):
 Adds .txt to end of file name if it isn't added already
 '''
 def SetUpBoard(Board, A, B, FileFound):
-  FileFound = False
+  global FileName ### To allow SaveGame function to use the same file when saving
   FileName = 'game1.txt'
+  FileFound = False
   Answer = input('Do you want to load a saved game? (Y/N): ')
   if Answer == 'Y' or Answer == 'y':
     while FileFound == False:
@@ -440,13 +441,22 @@ def Game():
       else:
         GameEnd = True
         
+      '''
+      CHANGE
+      '''
       Save = input('Do you want to save? (y/n) ')
       SaveGame(A, B)
       
   if FileFound:
     PrintResult(A, B , NextPlayer)
     
-    
+
+'''
+...It saves the game
+
+- Rewrites every coordinate in A onto the file
+- Does again with B's coordinates
+'''
 def SaveGame(A, B):
   SaveFile = open(FileName, 'w')
   for i in A:
