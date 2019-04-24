@@ -405,7 +405,11 @@ def PrintResult(A, B, NextPlayer):
   print('Game ended')
   print(NextPlayer, ' lost this game as they cannot make a move')
   PrintPlayerPieces(A, B)
-  
+ 
+
+'''
+test
+'''
 def Game():
   A = [[0, 0, 0] for Piece in range(NUMBER_OF_PIECES + 1)]
   B = [[0, 0, 0] for Piece in range(NUMBER_OF_PIECES + 1)]
