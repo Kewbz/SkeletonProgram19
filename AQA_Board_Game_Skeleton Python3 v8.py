@@ -100,8 +100,9 @@ def AddPlayerB(Board, B):
         Board[PieceRow][PieceColumn] = 'b' + str(Index)   
   return Board
 
-def DisplayErrorCode(ErrorNumber):
-  print('Error ', ErrorNumber)
+def DisplayErrorCode(Value):
+    Errors = {1: 'Invalid piece', 2: 'Invalid coordinate', 3: 'Input must be integer', 4: 'Invalid file' }
+    print(Errors[Value])
   
 def SetUpBoard(Board, A, B, FileFound):
   FileName = 'game1.txt'
