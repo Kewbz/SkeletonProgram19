@@ -439,8 +439,21 @@ def Game():
         NextPlayer = SwapPlayer(NextPlayer)
       else:
         GameEnd = True
+        
+      Save = input('Do you want to save? (y/n) ')
+      SaveGame(A, B)
+      
   if FileFound:
     PrintResult(A, B , NextPlayer)
+    
+    
+def SaveGame(A, B):
+  SaveFile = open(FileName, 'w')
+  for i in A:
+    SaveFile.write(f'{i[0]}\n, {i[1]}\n, {i[2]}\n')
+  for i in B:
+    SaveFile.write(f'{i[0]}\n, {i[1]}\n, {i[2]}\n')
+
       
 if __name__ == "__main__":
   Game()      
