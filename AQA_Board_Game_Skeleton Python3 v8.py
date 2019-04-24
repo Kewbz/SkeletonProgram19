@@ -23,6 +23,14 @@ class MoveRecord:
     self.NewColumn = -1
     self.CanJump = False
 
+    
+'''
+Reads through each line in game.txt (file)
+- first line would be the row of the specific piece, second would be column and third if dame or not (0 or 1)
+PARAMATERS
+FileHandle = used to read the file
+PlayersPieces = double array [row][column]
+'''
 def LoadPieces(FileHandle, PlayersPieces):   
   for Index in range(NUMBER_OF_PIECES + 1):
     PlayersPieces[Index][ROW] = int(FileHandle.readline())
@@ -30,6 +38,17 @@ def LoadPieces(FileHandle, PlayersPieces):
     PlayersPieces[Index][DAME] = int(FileHandle.readline())
   return PlayersPieces
 
+
+'''
+Creates board wth dimensions 8x8
+
+PARAMETERS
+Board = 8x8 [row][column]
+
+thisRow starts with 0 and increments to 8 - another for loop has started with thisColumn = 0 and increments to 8
+In the for loops, an if condition checks if the current row + the current column is a factor of 2 (even). 
+If it is, then set coordinates of that area into UNUSED (xxxx), else set as SPACE
+'''
 def CreateNewBoard(Board): 
   for ThisRow in range(BOARD_SIZE):
     for ThisColumn in range(BOARD_SIZE):
@@ -39,6 +58,15 @@ def CreateNewBoard(Board):
         Board[ThisRow][ThisColumn] = SPACE
   return Board
 
+
+
+'''
+Adds pieces of player A onto the board. Starts a for loop from index of 1 to 12 (if new game)
+
+PARAMATERS
+Board = 8x8 [row][column]
+A = player A's pieces in coordinates [row][column]
+'''
 def AddPlayerA(Board, A):
   for Index in range(1, NUMBER_OF_PIECES + 1):
     PieceRow = A[Index][ROW]
@@ -50,7 +78,16 @@ def AddPlayerA(Board, A):
       else:
         Board[PieceRow][PieceColumn] = 'a' + str(Index)
   return Board
-    
+
+
+
+'''
+Adds pieces of player B onto the board. Starts a for loop from index of 1 to 12 (if new game)
+
+PARAMATERS
+Board = 8x8 [row][column]
+B = player B's pieces in coordinates [row][column]
+'''
 def AddPlayerB(Board, B):      
   for Index in range(1, NUMBER_OF_PIECES + 1):
     PieceRow = B[Index][ROW]
@@ -63,9 +100,8 @@ def AddPlayerB(Board, B):
         Board[PieceRow][PieceColumn] = 'b' + str(Index)   
   return Board
 
-def DisplayErrorCode(Value):
-  Error = {1: 'Invalid piece', 2: 'Invalid coordinate', 3: 'Input must be integer', 4: 'Invalid file'}
-  print(Error[Value])
+def DisplayErrorCode(ErrorNumber):
+  print('Error ', ErrorNumber)
   
 def SetUpBoard(Board, A, B, FileFound):
   FileName = 'game1.txt'
