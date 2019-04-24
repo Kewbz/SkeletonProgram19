@@ -407,9 +407,6 @@ def PrintResult(A, B, NextPlayer):
   PrintPlayerPieces(A, B)
  
 
-'''
-test
-'''
 def Game():
   A = [[0, 0, 0] for Piece in range(NUMBER_OF_PIECES + 1)]
   B = [[0, 0, 0] for Piece in range(NUMBER_OF_PIECES + 1)]
