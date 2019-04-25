@@ -104,8 +104,10 @@ def AddPlayerB(Board, B):
 '''
 Displays what error occurred, instead of just the number
 
-- Value is only parameter needed in function
 - Anything in {curly brackets}  with : maps a string to a value
+
+PARAMETERS
+Value = Corresponds to error code that needs to be displayed
 '''
 def DisplayErrorCode(Value):
     Errors = {1: 'Invalid piece', 2: 'Invalid coordinate', 3: 'Input must be integer', 4: 'Invalid file' }
