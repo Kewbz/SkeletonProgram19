@@ -63,8 +63,21 @@ def AddPlayerB(Board, B):
         Board[PieceRow][PieceColumn] = 'b' + str(Index)   
   return Board
 
+###############################################################################################################
+#Displays Error Codes - Robert
 def DisplayErrorCode(ErrorNumber):
-  print('Error ', ErrorNumber)
+    if ErrorNumber == 1:
+      print('Error ', ErrorNumber,': That is an invalid piece')
+
+    elif ErrorNumber == 2:
+      print('Error ', ErrorNumber,': That is an invalid location')
+
+    elif ErrorNumber == 3:
+      print('Error ', ErrorNumber,': That is an invalid set of coordinates')
+
+    elif ErrorNumber == 4:
+      print('Error ', ErrorNumber,': That is an invalid file')
+###############################################################################################################
   
 def SetUpBoard(Board, A, B, FileFound):
   FileName = 'game1.txt'
