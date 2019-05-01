@@ -5,6 +5,18 @@
 
 # Version number: 0.1.3
 
+'''
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+Edits made on lines
+
+380 - 390
+
+and
+
+399- 416
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+'''
+
 
 SPACE = '     '
 UNUSED = 'XXXXX'
@@ -362,9 +374,48 @@ def Game():
         NextPlayer = SwapPlayer(NextPlayer)
       else:
         GameEnd = True
+
+        
+        
+'''
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+Asks after every turn if you want to save
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+'''
+
+      Save = input("Do you want to save? y/n ")
+      if Save == 'y' or Save == 'Y':
+        SaveGame(A, B)
+  
+ 
+
   if FileFound:
     PrintResult(A, B , NextPlayer)
-      
+
+    
+    
+'''
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+New procedure made
+
+PARAMETERS
+A = Overwrites coordinates for A
+B = Overwrites coordinates for B
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+'''    
+    
+def SaveGame(A, B):
+  SaveFile = open(FileName, 'w')
+  for x in A:
+    FileName.write(f'{x[0]}\n, {x[1]}\n, {x[2]}\n')
+  for x in B:
+    FileName.write(f'{x[0]}\n, {x[1]}\n, {x[2]}\n')
+  
+    
 if __name__ == "__main__":
   Game()      
    
