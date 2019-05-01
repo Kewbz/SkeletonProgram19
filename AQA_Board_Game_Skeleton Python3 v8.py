@@ -41,6 +41,7 @@ def LoadPieces(FileHandle, PlayersPieces):
   return PlayersPieces
 
 
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 '''
 Creates board wth dimensions 8x8
 
@@ -51,6 +52,8 @@ thisRow starts with 0 and increments to 8 - another for loop has started with th
 In the for loops, an if condition checks if the current row + the current column is a factor of 2 (even). 
 If it is, then set coordinates of that area into UNUSED (xxxx), else set as SPACE
 '''
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
 def CreateNewBoard(Board): 
   for ThisRow in range(BOARD_SIZE):
     for ThisColumn in range(BOARD_SIZE):
@@ -61,7 +64,7 @@ def CreateNewBoard(Board):
   return Board
 
 
-
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 '''
 Adds pieces of player A onto the board. Starts a for loop from index of 1 to 12 (if new game)
 
@@ -69,6 +72,8 @@ PARAMATERS
 Board = 8x8 [row][column]
 A = player A's pieces in coordinates [row][column]
 '''
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
 def AddPlayerA(Board, A):
   for Index in range(1, NUMBER_OF_PIECES + 1):
     PieceRow = A[Index][ROW]
@@ -82,7 +87,7 @@ def AddPlayerA(Board, A):
   return Board
 
 
-
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 '''
 Adds pieces of player B onto the board. Starts a for loop from index of 1 to 12 (if new game)
 
@@ -90,6 +95,8 @@ PARAMATERS
 Board = 8x8 [row][column]
 B = player B's pieces in coordinates [row][column]
 '''
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
 def AddPlayerB(Board, B):      
   for Index in range(1, NUMBER_OF_PIECES + 1):
     PieceRow = B[Index][ROW]
@@ -102,21 +109,25 @@ def AddPlayerB(Board, B):
         Board[PieceRow][PieceColumn] = 'b' + str(Index)   
   return Board
 
-
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 '''
 Displays what error occurred, instead of just the number
 
 - Value is only parameter needed in function
 - Anything in {curly brackets}  with : maps a string to a value
 '''
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
 def DisplayErrorCode(Value):
     Errors = {1: 'Invalid piece', 2: 'Invalid coordinate', 3: 'Input must be integer', 4: 'Invalid file' }
     print(Errors[Value])
   
-  
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 '''
 Adds .txt to end of file name if it isn't added already
 '''
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
 def SetUpBoard(Board, A, B, FileFound):
   FileFound = False
   FileName = 'game1.txt'
@@ -408,10 +419,6 @@ def PrintResult(A, B, NextPlayer):
   print(NextPlayer, ' lost this game as they cannot make a move')
   PrintPlayerPieces(A, B)
  
-
-'''
-test
-'''
 def Game():
   A = [[0, 0, 0] for Piece in range(NUMBER_OF_PIECES + 1)]
   B = [[0, 0, 0] for Piece in range(NUMBER_OF_PIECES + 1)]
