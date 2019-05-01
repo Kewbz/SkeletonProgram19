@@ -66,23 +66,32 @@ def AddPlayerB(Board, B):
 def DisplayErrorCode(ErrorNumber):
   print('Error ', ErrorNumber)
   
+###############################################################################################################
+#No '.txt' For Loading - Robert
 def SetUpBoard(Board, A, B, FileFound):
-  FileName = 'game1.txt'
-  Answer = input('Do you want to load a saved game? (Y/N): ')
-  if Answer == 'Y' or Answer == 'y':
-    FileName = input('Enter the filename: ')
-  try:
-    FileHandle = open(FileName, 'r')
-    FileFound = True
-    A = LoadPieces(FileHandle, A)
-    B = LoadPieces(FileHandle, B)
-    FileHandle.close()
-    Board = CreateNewBoard(Board)
-    Board = AddPlayerA(Board, A)
-    Board = AddPlayerB(Board, B)
-  except:
-    DisplayErrorCode(4)
-  return Board, A, B, FileFound
+    FileName = 'game1.txt'
+    Answer = input('Do you want to load a saved game? (Y/N): ')
+    FileFound = False
+    while FileFound == False:
+        if Answer == 'Y' or Answer == 'y':
+            FileName = input('Enter the filename: ')
+            if '.txt' not in FileName:
+                FileName += '.txt'
+        elif Answer == 'N' or Answer == 'n':
+            print('Entering Game')
+        try:
+            FileHandle = open(FileName, 'r')
+            FileFound = True
+            A = LoadPieces(FileHandle, A)
+            B = LoadPieces(FileHandle, B)
+            FileHandle.close()
+            Board = CreateNewBoard(Board)
+            Board = AddPlayerA(Board, A)
+            Board = AddPlayerB(Board, B)
+        except:
+            DisplayErrorCode(4)
+        return Board, A, B, FileFound
+###############################################################################################################
 
 def PrintHeading():
   print('    ', end='')
