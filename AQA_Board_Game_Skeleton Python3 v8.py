@@ -23,7 +23,7 @@ class MoveRecord:
     self.NewColumn = -1
     self.CanJump = False
 
-    
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 '''
 Reads through each line in game.txt (file)
 - first line would be the row of the specific piece, second would be column and third if dame or not (0 or 1)
@@ -31,6 +31,8 @@ PARAMATERS
 FileHandle = used to read the file
 PlayersPieces = double array [row][column]
 '''
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
 def LoadPieces(FileHandle, PlayersPieces):   
   for Index in range(NUMBER_OF_PIECES + 1):
     PlayersPieces[Index][ROW] = int(FileHandle.readline())
