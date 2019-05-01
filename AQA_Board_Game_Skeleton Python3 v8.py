@@ -66,6 +66,7 @@ def AddPlayerB(Board, B):
 def DisplayErrorCode(ErrorNumber):
   print('Error ', ErrorNumber)
   
+###############################################################################################################
 #No '.txt' For Loading - Robert
 def SetUpBoard(Board, A, B, FileFound):
     FileName = 'game1.txt'
@@ -90,6 +91,7 @@ def SetUpBoard(Board, A, B, FileFound):
         except:
             DisplayErrorCode(4)
         return Board, A, B, FileFound
+###############################################################################################################
 
 def PrintHeading():
   print('    ', end='')
